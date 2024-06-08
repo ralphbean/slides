@@ -23,7 +23,7 @@ Compose software that consists of **multiple components, from multiple repositor
 
 Provide **transparency on the software supply chain**, including both what makes up the software and how it was built.
 
-Provide a way for software teams to **release to destinations under the control other teams** (like SRE or release engineering teams).
+Provide a way for software teams to **release to destinations under the control other teams** with minimal friction (teams like SRE or release engineering teams).
 
 Provide a **unified user experience** across the entire build, test, and release process
 
@@ -38,6 +38,8 @@ Provide a **unified user experience** across the entire build, test, and release
 If any of the following statements sound like you:
 
 - You don't have a secure build environment today. Where do we even build?
+
+- You want to secure your build pipeline, but don't know how or don't have the time.
  
 - You worry about the **provenance** of your software builds.
 

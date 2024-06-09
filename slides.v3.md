@@ -258,14 +258,30 @@ As Konflux is an integration of open source projects:
 
 ]
 ---
+.left-column[
+  ## What is it?
+  ## Why use it?
+  ## Architecture
+]
+.right-column[
+
+At a glance, the system looks like:
+
+TODO - diagram
+
+Some notes about the deployment, sharding, scaling, resilience, APIs, RBAC, etc.
+
+]
+---
+---
 template: inverse
 
-## What is the flow like, then?
+## How do you use it?
 ---
 name: how
 
 .left-column[
-  ## The Process
+  ## Flow
   ### - Build
 ]
 .right-column[

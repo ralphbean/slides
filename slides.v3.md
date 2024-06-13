@@ -70,24 +70,12 @@ Being good at delivery means it is:
 The **technology problem** here isn't that complicated..
 ]
 
-..but enabling one team at the expense of another creates an unsustainable situation.
+..but enabling one team at the expense of another creates an unstable situation.
 
 **Equilibrium** needs to be reached. We need to build a healthy relationship with our colleagues, understand what each party needs and build a system that respects those needs.
 
-.footnote[TBH Brian, I don't understand this slide if you're not speaking over it. Let's rephrase to explain why anybody's team is at a loss]
 
-]
-
----
-.left-column[
-  ## Continuous Delivery
-  ## Practice makes Perfect
-  ## Human Problems
-  ## Dramatis Personae
-]
-.right-column[
-
-### Who is involved?
+Who is involved?
 
 **Developers**: want to be efficient, use modern technologies, be free to
 experiment and evolve over time.  Desire minimum toil / overhead 
@@ -105,14 +93,15 @@ are followed, CVEs are fixed and threats from bad actors are mitigated
   ## Continuous Delivery
   ## Practice makes Perfect
   ## Human Problems
-  ## Dramatis Personae
   ## Rigidity
 ]
 .right-column[
 
 ## The problem with rigid build systems
 
-(or, what happens when security is enabled at at the expense of developers)
+How did we prioritize security and compliance?
+
+By **making insecure things impossible**.
 
 - 🐢 Innovation is slow because there are relatively few people who can make changes
 
@@ -129,7 +118,6 @@ are followed, CVEs are fixed and threats from bad actors are mitigated
   ## Continuous Delivery
   ## Practice makes Perfect
   ## Human Problems
-  ## Dramatis Personae
   ## Rigidity
   ## What if?
 ]
@@ -145,12 +133,9 @@ What if you could...
 
 - Give users the power to change their build processes in any way they like.
 
-What if you could **give users the freedom to experiment** but clearly message what is necessary in order to release an artifact. **Block releases that don't meet the requirements**.
+What if you could **give users the freedom to experiment** but clearly message what is necessary in order to release an artifact.
 
-.footnote[
-This is the basis for equilibrium.
-TODO - but, "equilibrium"?
-]
+**Block releases that don't meet the requirements**.
 
 ]
 
@@ -159,7 +144,6 @@ TODO - but, "equilibrium"?
   ## Continuous Delivery
   ## Practice makes Perfect
   ## Human Problems
-  ## Dramatis Personae
   ## Rigidity
   ## What if?
   ## Virtuous Cycle
@@ -205,10 +189,14 @@ Our goals are to be able to:
 
 🕵 Provide **transparency on the software supply chain**, including both what makes up the software and how it was built.
 
-🤝 Provide a way for software teams to **release to destinations under the control other teams** with minimal friction (teams like SRE or release engineering teams).
+TODO EMOJI
+Help teams ensure their software **meets their own expectations** by providing functional integration test capabilities.
 
-🌈 Provide a **unified user experience** across the entire build, test, and release process
+🤝 Provide a way for software teams to **release to destinations under the control other teams** with guarantees that it **meets  the destination teams' expectations**.
 
+🌈 Tie all that together with a **unified user experience** across the entire build, test, and release process
+
+And above all, minimize friction.
 ]
 ---
 .left-column[
@@ -240,17 +228,18 @@ Then, Konflux might be the platform your team.
 
 As the Konflux build pipelines are engineered with security in mind:
 
-- Builds produced by Konflux build-tasks are certain to have **accurate manifests**.
+- Builds produced by Konflux build-tasks are certain to have **accurate source bill of materials (SBOMs)**.
 - Build dependencies are fetched up front and the build is executed with **no network available**.
 
 As Konflux is based on Tekton:
 
-- It provides **cryptographic attestation** about the provenance of the build, recorded as [in-toto](https://github.com/in-toto/attestation) attestations.
+- Everything that happened during the build is recorded in a **signed, immutable log called an attestation**.
 - This lets us write **machine-readable policy** which can be used at release time to determine if an artifact is acceptable.
 
 As Konflux gates builds at release-time:
 
 - Platform users can **develop new build strategies** in their production workspace to speed proofs of concept.
+- Users get continuous feedback during their development cycle on pull requests, so there's **no surprises when it comes to release time**.
 
 As Konflux is an integration of open source projects:
 
@@ -261,96 +250,61 @@ As Konflux is an integration of open source projects:
 .left-column[
   ## What is it?
   ## Why use it?
-  ## Architecture
+  ## APIs
+  ## - Builds
 ]
 .right-column[
 
-At a glance, the system looks like:
-
-TODO - diagram
-
-Some notes about the deployment, sharding, scaling, resilience, APIs, RBAC, etc.
-
-]
----
----
-template: inverse
-
-## How do you use it?
----
-name: how
-
-.left-column[
-  ## Flow
-  ### - Build
-]
-.right-column[
-
-Assume that your team has already used [the installer](https://github.com/konflux-ci/konflux-ci?tab=readme-ov-file#konflux-ci) to set up an instance or that somebody else is running an instance for you.
-
-In the UI, you click, click..
-
-TODO - Screenshot goes here.
-
-Under the hood, the system has recorded an `Application` resource that represents a coherent set of Components that should be built, tested, and released together. It recorded a `Component` too, that represents the git branch on the git repository that should be used to build OCI artifacts from commits that appear there.
-]
----
-When you create the component, Konflux will send a **pull request** to your repo with the pipeline definition in a `.tekton/` directory.
-
-![](pull-request.png)
----
-
-```remark
-apiVersion: tekton.dev/v1
-kind: PipelineRun
-spec:
-  pipelineSpec:
-    tasks:
-    - name: build-container
-      taskRef:
-        params:
-        - name: name
-          value: buildah
-        - name: bundle
-          value: "quay.io/redhat-appstudio-tekton-catalog/task-buildah:0.1"
-        - name: kind
-          value: task
-        resolver: bundles
-      runAfter:
-      - prefetch-dependencies
-      workspaces:
-      - name: source
-        workspace: workspace
-```
-
----
-![](pull-request.png)
----
-.left-column[
-  ## The Process
-  ### - Build
-]
-.right-column[
-
-The pull request itself initiates a build in Konflux.
-
+![](build.jpg)
 
 ]
 ---
 .left-column[
-  ## The Process
-  ### - Build
-  ### - Test
+  ## What is it?
+  ## Why use it?
+  ## APIs
+  ## - Builds
+  ## - Integration
 ]
 .right-column[
 
-You register integration tests with the system that should be executed against all of the components in your application in response to new builds.
+![](integration.jpg)
 
-TODO - example of a integration test calling out to testing farm
+]
+---
+.left-column[
+  ## What is it?
+  ## Why use it?
+  ## APIs
+  ## - Builds
+  ## - Integration
+  ## - Releases
+]
+.right-column[
+
+![](release.jpg)
 
 ]
 ---
 name: last-page
 template: inverse
 
-## Thanks!
+## Questions?
+
+We could only scratch the surface - there's so much more to talk about.
+
+If you want to try to set up Konflux locally, try our installer instructions at [https://github.com/konflux-ci/konflux-ci](https://github.com/konflux-ci/konflux-ci).
+
+If you want to start a discussion, open a github issue under [konflux-ci/discussions](https://github.com/konflux-ci/discussions)
+
+---
+
+name: inverse
+layout: true
+class: center, middle, inverse, title
+---
+<img class="logo" src='https://konflux-ci.dev/img/logo.svg'/><br/>
+
+## Thank you!
+
+.footnote[[konflux-ci.dev](https://konflux-ci.dev)]

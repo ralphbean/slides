@@ -185,7 +185,7 @@ layout: false
 
 Our goals are to be able to:
 
-⌬ Compose software that consists of **multiple components, from multiple repositories**.
+⌬ Build software that consists of **multiple components, from multiple repositories**.
 
 🕵 Provide **transparency on the software supply chain**, including both what makes up the software and how it was built.
 

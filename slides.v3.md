@@ -210,13 +210,15 @@ If any of the following statements sound like you:
 
 - 💸 You want to secure your build pipeline, but **don't know how or don't have the time**.
  
-- 💀 You worry about the **provenance** of your software builds.
+- 💀 You worry about the **provenance*** of your software builds.
 
 - ⛓️ The build system you have today is **inflexible or difficult** to extend.
 
 - 😕 You **get lost trying to follow the status** of artifacts on their way to release.
 
 Then, Konflux might be the platform your team.
+
+.footnote[***provenance** means the origin, or the source of something]
 ]
 ---
 .left-column[

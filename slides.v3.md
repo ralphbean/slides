@@ -195,7 +195,6 @@ Our goals are to be able to:
 
 🌈 Tie all that together with a **unified user experience** across the entire build, test, and release process
 
-And above all, minimize friction.
 ]
 ---
 .left-column[

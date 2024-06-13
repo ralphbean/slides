@@ -189,8 +189,7 @@ Our goals are to be able to:
 
 🕵 Provide **transparency on the software supply chain**, including both what makes up the software and how it was built.
 
-TODO EMOJI
-Help teams ensure their software **meets their own expectations** by providing functional integration test capabilities.
+✅ Help teams ensure their software **meets their own expectations** by providing functional integration test capabilities.
 
 🤝 Provide a way for software teams to **release to destinations under the control other teams** with guarantees that it **meets  the destination teams' expectations**.
 

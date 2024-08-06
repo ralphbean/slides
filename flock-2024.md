@@ -49,7 +49,7 @@ If any of the following statements sound like you:
 
 - 😕 You **get lost trying to follow the status** of artifacts on their way to release.
 
-Then, Konflux might be the platform your team.
+Then, Konflux might be the platform you.
 
 .footnote[***provenance** means the origin, or the source of something]
 ]

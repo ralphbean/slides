@@ -8,13 +8,6 @@ class: center, middle, inverse, title
 
 .footnote[[konflux-ci.dev](https://konflux-ci.dev)]
 ---
-template: inverse
-
-Let me tell you about...
-
-<img class="logo" src='https://konflux-ci.dev/img/logo.svg'/><br/>
-
----
 layout: false
 .left-column[
   ## What is it?

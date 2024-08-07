@@ -96,7 +96,7 @@ The **user has admin** in their workspace. This means that the user can access s
 
 Artifacts are **OCI artifacts**. SBOMs, attestations, signatures, and other supporting metadata are stored in the registry too.
 
-Any attestation used for making a release-time decision should be provably trusted (either because it is GPG signed or its immutable reference is added to the provenance by a trusted task).
+Any attestation used for making a release-time decision should be **provably trusted** (either because it is GPG signed or its immutable reference is added to the provenance by a trusted task).
 
 It should be possible to **install** one subsystem without the others and to replace one subsystem with a new one without affecting the others. See [!148](https://github.com/redhat-appstudio/architecture/pull/148) for an example of attempting to achieve this.
 

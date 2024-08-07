@@ -89,11 +89,12 @@ As Konflux is an integration of open source projects:
 .right-column[
 
 - Our API server is **the kube API server**. Services are [controllers](https://kubernetes.io/docs/concepts/architecture/controller/) that expose their API as Custom Resource Definitions.
-- We **use tekton** for anything that should be extended by the user (building, testing, releasing). Expose as much detail via kube resources as possible. Prefer to implement native tasks to perform work on cluster, rather than calling out to third-party services.
-- The **user has admin** in their workspace. This means that the user can access secrets in their workspace. This means that the system can never provide secrets to the user that are scoped beyond that user's domain. A user can exfiltrate the push secret from their workspace, build invalid content on their laptop, and push it to their buildtime registry. Such a build will be rejected at release time.
-- Artifacts built, tested, and shipped by the system are **OCI artifacts**. SBOMs, attestations, signatures, and other supporting metadata are stored in the registry alongside the artifact, tagged by the `cosign triangulate` convention.
-- While not true today, it should be possible to **install** one subsystem without the others and to replace one subsystem with a new one without affecting the others. See [!148](https://github.com/redhat-appstudio/architecture/pull/148) for an example of attempting to achieve this.
+- We **use tekton** for anything that should be extended by the user (building, testing, releasing).
+- The **user has admin** in their workspace. This means that the user can access secrets in their workspace.
+- Artifacts are **OCI artifacts**. SBOMs, attestations, signatures, and other supporting metadata are stored in the registry too.
 - Any attestation used for making a release-time decision should be provably trusted (either because it is GPG signed or its immutable reference is added to the provenance by a trusted task).
+
+It should be possible to **install** one subsystem without the others and to replace one subsystem with a new one without affecting the others. See [!148](https://github.com/redhat-appstudio/architecture/pull/148) for an example of attempting to achieve this.
 
 .footnote[:bulb: Adding new functionality usually looks like either adding a new **controller** or adding a new **tekton task**.]
 

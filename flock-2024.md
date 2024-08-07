@@ -88,6 +88,8 @@ As Konflux is an integration of open source projects:
 ]
 .right-column[
 
+### Some notes on architecture
+
 Our API server is **the kube API server**. Services are [controllers](https://kubernetes.io/docs/concepts/architecture/controller/) that expose their API as Custom Resource Definitions.
 
 We **use tekton** for anything that should be extended by the user (building, testing, releasing).

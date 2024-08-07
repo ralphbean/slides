@@ -94,7 +94,7 @@ Our API server is **the kube API server**. Services are [controllers](https://ku
 
 We **use tekton** for anything that should be extended by the user (building, testing, releasing).
 
-The **user has admin** in their workspace. This means that the user can access secrets in their workspace.
+The **user has admin** in their workspace. This means that the user can do lots of stuff - including access secrets in their workspace.
 
 Artifacts are **OCI artifacts**. SBOMs, attestations, signatures, and other supporting metadata are stored in the registry too.
 

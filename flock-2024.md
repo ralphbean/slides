@@ -96,8 +96,6 @@ As Konflux is an integration of open source projects:
 
 It should be possible to **install** one subsystem without the others and to replace one subsystem with a new one without affecting the others. See [!148](https://github.com/redhat-appstudio/architecture/pull/148) for an example of attempting to achieve this.
 
-.footnote[:bulb: Adding new functionality usually looks like either adding a new **controller** or adding a new **tekton task**.]
-
 ]
 ---
 .left-column[

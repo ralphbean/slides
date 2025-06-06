@@ -113,7 +113,7 @@ It should be possible to **install** one subsystem without the others and to rep
 ]
 .right-column[
 
-![](build.jpg)
+![](../../common/konflux/build.jpg)
 
 ]
 ---
@@ -127,7 +127,7 @@ It should be possible to **install** one subsystem without the others and to rep
 ]
 .right-column[
 
-![](integration.jpg)
+![](../../common/konflux/integration.jpg)
 
 ]
 ---
@@ -142,7 +142,7 @@ It should be possible to **install** one subsystem without the others and to rep
 ]
 .right-column[
 
-![](release.jpg)
+![](../../common/konflux/release.jpg)
 
 ]
 ---

@@ -255,7 +255,7 @@ As Konflux is an integration of open source projects:
 ]
 .right-column[
 
-![](build.jpg)
+![](../../common/konflux/build.jpg)
 
 ]
 ---
@@ -268,7 +268,7 @@ As Konflux is an integration of open source projects:
 ]
 .right-column[
 
-![](integration.jpg)
+![](../../common/konflux/integration.jpg)
 
 ]
 ---
@@ -282,7 +282,7 @@ As Konflux is an integration of open source projects:
 ]
 .right-column[
 
-![](release.jpg)
+![](../../common/konflux/release.jpg)
 
 ]
 ---

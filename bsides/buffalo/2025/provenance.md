@@ -212,7 +212,7 @@ template: inverse
 ---
 layout: false
 .left-column[
-  ## Practice
+  ## GitHub
 ]
 .right-column[
 
@@ -242,8 +242,8 @@ jobs:
 
 ---
 .left-column[
-  ## Practice
-  ## GitHub vs Tekton
+  ## GitHub
+  ## Tekton
 ]
 .right-column[
 
@@ -273,7 +273,7 @@ spec:
 ---
 .left-column[
   ## Practice
-  ## GitHub vs Tekton
+  ## Tekton
   ## Witness
 ]
 .right-column[
@@ -432,162 +432,7 @@ layout: false
 ---
 template: inverse
 
-# 🚀 Getting Started
-
----
-layout: false
-.left-column[
-  ## Getting Started
-]
-.right-column[
-
-## Questions to Ask Yourself
-
-### 📋 **Inventory**
-- What artifacts do you build?
-- Where are they built?
-- Who has access to the build process?
-
-### 🎯 **Requirements**  
-- What compliance requirements do you have?
-- What security properties matter?
-- What would "good enough" look like?
-
-### 🔧 **Tooling**
-- What build systems do you use?
-- Can they generate attestations?
-- Where would you store and verify them?
-
-]
-
----
-.left-column[
-  ## Getting Started
-  ## First Steps
-]
-.right-column[
-
-## Start Small, Think Big
-
-### 1. **Pick One Artifact** 🎯
-Start with your most critical or sensitive component
-
-### 2. **Generate Basic Provenance** 📝
-Use your existing CI/CD system's attestation features
-
-### 3. **Verify Manually** 🔍
-Learn what the attestations contain and mean
-
-### 4. **Write Simple Policies** 📜
-Start with basic requirements (e.g., "must have SBOM")
-
-### 5. **Automate Verification** ⚙️
-Build verification into your deployment pipeline
-
-### 6. **Expand Coverage** 📈
-Add more artifacts and more detailed requirements
-
-]
-
----
-.left-column[
-  ## Getting Started
-  ## First Steps
-  ## Tools to Try
-]
-.right-column[
-
-## Tools to Explore
-
-### **For GitHub Users** 🐱
-- `actions/attest-build-provenance`
-- `gh attestation verify`
-
-### **For Kubernetes Users** ☸️
-- Tekton Chains
-- Sigstore Cosign
-- SLSA GitHub Generator
-
-### **For Policy Management** 📜
-- Conforma (Red Hat)
-- Open Policy Agent (OPA)
-- Sigstore Policy Controller
-
-### **For General Use** 🛠️
-- Witness framework
-- in-toto tools
-- SLSA generators
-
-]
-
----
-template: inverse
-
-# ❓ Questions to Ponder
-
----
-layout: false
-.left-column[
-  ## Questions
-]
-.right-column[
-
-## Real-World Considerations
-
-### 🤝 **Trust Models**
-- Who do you trust to make attestations?
-- How do you verify the attesters themselves?
-- What happens when trust relationships change?
-
-### 📈 **Scale & Performance**
-- How many attestations per artifact?
-- Where do you store them long-term?
-- How do you query them efficiently?
-
-### 🔄 **Evolution & Maintenance**
-- How do policies evolve over time?
-- What happens to old attestations?
-- How do you handle legacy artifacts?
-
-]
-
----
-template: inverse
-
-# 🎯 Key Takeaways
-
----
-layout: false
-.left-column[
-  ## Takeaways
-]
-.right-column[
-
-.large[
-**1. Provenance is about trust, not just compliance** 🤝
-]
-
-Know where your software comes from and how it was built.
-
-.large[
-**2. Attestations provide context, not just identity** 📝
-]
-
-Move beyond "it's signed" to "here's what happened."
-
-.large[  
-**3. Policy-based gating enables safe innovation** 🚀
-]
-
-Define requirements clearly, then give teams freedom to experiment.
-
-.large[
-**4. Start small, but think about the bigger picture** 🌟
-]
-
-Begin with one artifact, plan for your entire software supply chain.
-
-]
+# 🎯 Ok.
 
 ---
 name: last-page
@@ -595,7 +440,7 @@ template: inverse
 
 ## 🔗 Resources & Questions
 
-**Red Hat Article**: [How we use software provenance at Red Hat](https://developers.redhat.com/articles/2025/05/15/how-we-use-software-provenance-red-hat)
+**Blog**: [How we use software provenance at Red Hat](https://developers.redhat.com/articles/2025/05/15/how-we-use-software-provenance-red-hat)
 
 **Try Konflux**: [konflux-ci.dev](https://konflux-ci.dev)
 
@@ -610,8 +455,6 @@ layout: true
 class: center, middle, inverse, title
 ---
 
-# Questions? 
+# Thanks!
 
-### 🛡️ Let's establish some trust! 
-
-.footnote[Ralph Bean • @ralphbean • Red Hat] 
+.footnote[Ralph Bean]

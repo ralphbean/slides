@@ -244,11 +244,15 @@ layout: false
 ```
 $ echo '{"hello": "world"}' > predicate.json
 
-$ cosign attest  --type custom --predicate predicate.json quay.io/rbean/test:bsides
+$ cosign attest \
+    --type custom \
+    --predicate predicate.json \
+    quay.io/rbean/test:bsides
 
 $ cosign verify-attestation \
-    --certificate-identity ralph.bean@gmail.com
-    --certificate-oidc-issuer https://github.com/login/oauth quay.io/rbean/test:bsides \
+    --certificate-identity ralph.bean@gmail.com \
+    --certificate-oidc-issuer https://github.com/login/oauth \
+    quay.io/rbean/test:bsides \
         | jq '.payload | @base64d | fromjson'
 ```
 
@@ -295,7 +299,8 @@ If there's network, show:
 
 ```
 IMAGE=quay.io/lucarval/festoji@sha256:b508f3da1ba56f258d72da91c8ce07950ced85f142d81974022f61211c4a445a
-oras blob fetch "$IMAGE" --output - | jq '.dsseEnvelope.payload | @base64d | fromjson '
+oras blob fetch "$IMAGE" --output - | \
+    jq '.dsseEnvelope.payload | @base64d | fromjson '
 ```
 
 ✅ **Source**: Commit SHA, repo URL  
@@ -350,7 +355,8 @@ If there's network, show:
 
 ```
 IMAGE=quay.io/bootc-devel/fedora-bootc-rawhide-standard:20250605-110837
-cosign download attestation $IMAGE  2> /dev/null | jq '.payload | @base64d | fromjson '
+cosign download attestation $IMAGE  2> /dev/null | \
+    jq '.payload | @base64d | fromjson '
 ```
 
 ✅ **Source**: Commit SHA, repo URL  

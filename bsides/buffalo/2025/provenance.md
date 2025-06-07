@@ -235,6 +235,28 @@ template: inverse
 ---
 layout: false
 .left-column[
+  ## sigstore & cosign
+]
+.right-column[
+
+## cosign from the sigstore project
+
+```
+$ echo '{"hello": "world"}' > predicate.json
+
+$ cosign attest  --type custom --predicate predicate.json quay.io/rbean/test:bsides
+
+$ cosign verify-attestation \
+    --certificate-identity ralph.bean@gmail.com
+    --certificate-oidc-issuer https://github.com/login/oauth quay.io/rbean/test:bsides \
+        | jq '.payload | @base64d | fromjson'
+```
+
+]
+---
+layout: false
+.left-column[
+  ## sigstore & cosign
   ## GitHub
 ]
 .right-column[
@@ -262,6 +284,7 @@ jobs:
 ---
 layout: false
 .left-column[
+  ## sigstore & cosign
   ## GitHub
 ]
 .right-column[
@@ -284,6 +307,7 @@ oras blob fetch "$IMAGE" --output - | jq '.dsseEnvelope.payload | @base64d | fro
 
 ---
 .left-column[
+  ## sigstore & cosign
   ## GitHub
   ## Tekton
 ]
@@ -314,6 +338,7 @@ spec:
 
 ---
 .left-column[
+  ## sigstore & cosign
   ## GitHub
   ## Tekton
 ]
@@ -337,6 +362,7 @@ cosign download attestation $IMAGE  2> /dev/null | jq '.payload | @base64d | fro
 
 ---
 .left-column[
+  ## sigstore & cosign
   ## GitHub
   ## Tekton
   ## Witness
@@ -398,18 +424,17 @@ layout: false
 ## conforma: Policy-Based Gating
 
 ```rego
-# Was a CVE scan performed?
-allow {
-    vuln_attestations := input.attestations[_]
-    vuln_attestations.predicate.scanType == "vulnerability"
-    vuln_attestations.predicate.results.critical < 5
-}
-
-# Was this built with a trusted task?
-allow {
-    build_attestation := input.attestations[_]  
-    build_attestation.predicate.buildType == "tekton.dev/v1beta1/TaskRun"
-    build_attestation.predicate.builder.id in trusted_builders
+_trust_errors contains error if {
+    not _uses_trusted_artifacts
+    some task in tekton.untrusted_task_refs(
+      lib.tasks_from_pipelinerun)
+    error := {
+        "msg": sprintf(
+            "Pipeline task %q uses an untrusted task reference, %s",
+            [tekton.pipeline_task_name(task), _task_info(task)],
+        ),
+        "term": tekton.task_name(task),
+    }
 }
 ```
 
@@ -474,7 +499,7 @@ layout: false
 ---
 template: inverse
 
-# 😐 Ok.
+# Ok.
 
 ---
 name: last-page
@@ -483,6 +508,8 @@ template: inverse
 ## 🔗 Resources & Questions
 
 **Blog**: [How we use software provenance at Red Hat](https://developers.redhat.com/articles/2025/05/15/how-we-use-software-provenance-red-hat)
+
+**sigstore project**: [sigstore.dev](https://www.sigstore.dev/)
 
 **in-toto Attestations**: [in-toto.io](https://in-toto.io)
 

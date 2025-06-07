@@ -9,17 +9,17 @@ class: center, middle, inverse, title
 
 Ralph Bean • Red Hat
 
-.footnote[🔗 slides at: your-url-here]
+.footnote[🔗 slides: [ralphbean.github.io/slides/bsides/buffalo/2025](https://ralphbean.github.io/slides/bsides/buffalo/2025)]
 
 ---
 template: inverse
 
-# 🤔 The Question
+# 🍖 Meatspace Analogy
 
 ---
 layout: false
 .left-column[
-  ## The Question
+  ## Meatspace Analogy
 ]
 .right-column[
 
@@ -27,7 +27,7 @@ layout: false
 
 - 📍 Where was it assembled?
 - 🏭 Where did its parts come from?
-- 🌱 Did it meet organic criteria?
+- 🌱 Did it meet blah organic criteria?
 - 👩‍🔬 Which quality inspector assessed it?
 - 📜 What certifications does it have?
 
@@ -39,7 +39,7 @@ You get this information **stamped on packaging** or **included in the box**.
 
 ---
 .left-column[
-  ## The Question
+  ## Meatspace Analogy
   ## Software Reality
 ]
 .right-column[
@@ -56,42 +56,47 @@ Do you know its **provenance**?
 - 👤 Who claims these facts?
 - 🔒 Can you trust those claims?
 
+.large[
+We generally don't get this with software today.
 ]
 
----
-template: inverse
-
-# 📦 What is Provenance?
+]
 
 ---
 layout: false
 .left-column[
+  ## Meatspace Analogy
+  ## Software Reality
   ## What is Provenance?
 ]
 .right-column[
 
-.large[
-**Provenance** is the **origin** of something.
-]
+## What is provenance?
 
 For software artifacts (containers, packages, binaries):
 
 - 📂 **Source**: What sources were provided to the build?
 - 🔄 **Transformation**: What steps were applied before the build?
 - 🏗️ **Build Process**: How was it built? Where? When?
-- 🛡️ **Post-Build**: What happened to the artifact after the build?
+- 🛡️ **Post-Build**: What happened to the artifact after that?
 - ✅ **Verification**: What checks were performed?
+
+.foonote[
+Generally, **provenance** is the **origin** of something.
+]
 
 ]
 
 ---
 .left-column[
+  ## Meatspace Analogy
+  ## Software Reality
   ## What is Provenance?
   ## Why Care?
 ]
 .right-column[
 
-## Supply Chain Attacks are Real
+## Supply Chain Attacks are a Thing
 
 - **SolarWinds** (2020): Build system compromised
 - **Codecov** (2021): Bash uploader script compromised  
@@ -103,12 +108,30 @@ For software artifacts (containers, packages, binaries):
 ]
 
 ]
+---
+.left-column[
+  ## Meatspace Analogy
+  ## Software Reality
+  ## What is Provenance?
+  ## Why Care?
+  ## Threats
+]
+.right-column[
+
+![](../../../common/supply-chain-threats.svg)
+
+.footnote[*from the "Supply-chain Levels for Software Artifacts" or SLSA ("salsa") docs!]
+
+]
 
 ---
 .left-column[
+  ## Meatspace Analogy
+  ## Software Reality
   ## What is Provenance?
   ## Why Care?
-  ## Current State
+  ## Threats
+  ## Traditional Signing
 ]
 .right-column[
 
@@ -119,7 +142,7 @@ gpg --verify artifact.tar.gz.sig artifact.tar.gz
 ```
 
 ✅ **Identity**: Who signed this?  
-❌ **Context**: What were they claiming when they signed it?
+❓ **Context**: What were they claiming when they signed it?
 
 .large[
 A signature just means **"it's good"** 
@@ -178,7 +201,7 @@ Instead of just "it's signed" → **"here's exactly what happened"**
 }
 ```
 
-The **statement** contains:
+The **payload** contains:
 - **Subject**: The artifact being described
 - **Predicate**: The claim being made about it
 
@@ -188,7 +211,7 @@ The **statement** contains:
 .left-column[
   ## Attestations
   ## Structure
-  ## Provenance Types
+  ## Predicate Types
 ]
 .right-column[
 
@@ -207,7 +230,7 @@ Each type answers different questions about your artifact.
 ---
 template: inverse
 
-# 🔍 Provenance in Practice
+# 🔍 Provenance Predicates in Practice
 
 ---
 layout: false
@@ -221,10 +244,6 @@ layout: false
 ```yaml
 jobs:
   build:
-    permissions:
-      id-token: write  # for OIDC
-      contents: read
-      attestations: write
     steps:
       - uses: actions/checkout@v4
       - name: Build
@@ -234,9 +253,32 @@ jobs:
           subject-path: './dist/app'
 ```
 
-✅ **Identity**: GitHub's signing key  
+✅ **Source**: Commit SHA, repo URL  
+✅ **Workflow**: Workflow file, inputs   
+❓ **Materials**: Which actions?  
+❓ **Data plane**: Who can sign?  
+
+]
+---
+layout: false
+.left-column[
+  ## GitHub
+]
+.right-column[
+
+## GitHub Actions Provenance
+
+If there's network, show:
+
+```
+IMAGE=quay.io/lucarval/festoji@sha256:b508f3da1ba56f258d72da91c8ce07950ced85f142d81974022f61211c4a445a
+oras blob fetch "$IMAGE" --output - | jq '.dsseEnvelope.payload | @base64d | fromjson '
+```
+
 ✅ **Source**: Commit SHA, repo URL  
 ✅ **Workflow**: Workflow file, inputs  
+❓ **Materials**: Which actions?  
+❓ **Data plane**: Who can sign?  
 
 ]
 
@@ -263,16 +305,39 @@ spec:
       value: https://github.com/example/repo
 ```
 
-✅ **Kubernetes-native**  
-✅ **Detailed task execution**  
-✅ **Parameter tracking**  
-✅ **Results recording**  
+✅ **Source**: Commit SHA, repo URL  
+✅ **Detailed task execution**: How was it called  
+✅ **Detailed materials**: What was used  
+✅ **Control plane**: Payload doesn't sign itself  
 
 ]
 
 ---
 .left-column[
-  ## Practice
+  ## GitHub
+  ## Tekton
+]
+.right-column[
+
+## Tekton Chains Provenance
+
+If there's network, show:
+
+```
+IMAGE=quay.io/bootc-devel/fedora-bootc-rawhide-standard:20250605-110837
+cosign download attestation $IMAGE  2> /dev/null | jq '.payload | @base64d | fromjson '
+```
+
+✅ **Source**: Commit SHA, repo URL  
+✅ **Detailed task execution**: How was it called  
+✅ **Detailed materials**: What was used  
+✅ **Control plane**: Payload doesn't sign itself  
+
+]
+
+---
+.left-column[
+  ## GitHub
   ## Tekton
   ## Witness
 ]
@@ -286,24 +351,22 @@ witness run -s test -- make test
 witness run -s deploy -- kubectl apply -f app.yaml
 ```
 
-✅ **Policy-driven**  
-✅ **Multi-step workflows**  
-✅ **Environment capture**  
-✅ **Flexible attestation types**  
-
-Each tool has different strengths for different use cases.
+✅ **Source**: Commit SHA, repo URL   
+✅ **Detailed task execution**: How was it called  
+✅ **Detailed materials**: What was used  
+❓ **Data plane**: Payload signs itself  
 
 ]
 
 ---
 template: inverse
 
-# 🏗️ Red Hat's Approach
+# 🏗️ Konflux: My Project
 
 ---
 layout: false
 .left-column[
-  ## Red Hat's Approach
+  ## Konflux: My Project
 ]
 .right-column[
 
@@ -317,25 +380,9 @@ layout: false
 - 🏗️ **Comprehensive**: Build → Test → Release pipeline
 - 🛡️ **Security-first**: Attestations throughout the process
 - 📊 **Policy-driven**: Machine-readable policies gate releases
+- 📋 **SBOM**: Novel manifest generation with "Hermeto".
 
-]
-
----
-.left-column[
-  ## Red Hat's Approach
-  ## Attestations Everywhere
-]
-.right-column[
-
-## Attestations Throughout the Pipeline
-
-- 🏗️ **Build attestation**: How was it built?
-- 📋 **SBOM**: What's inside?
-- 🛡️ **Vulnerability scan**: Security status
-- 🧪 **Test results**: Quality metrics
-- ✅ **Policy verification**: Compliance status
-
-.large[
+.footnote[
 **Each step creates verifiable evidence**
 ]
 
@@ -343,13 +390,12 @@ layout: false
 
 ---
 .left-column[
-  ## Red Hat's Approach
-  ## Attestations Everywhere
+  ## Konflux: My Project
   ## Policy Gates
 ]
 .right-column[
 
-## Conforma: Policy-Based Gating
+## conforma: Policy-Based Gating
 
 ```rego
 # Was a CVE scan performed?
@@ -372,55 +418,51 @@ allow {
 ]
 
 ---
-template: inverse
-
-# 🛠️ Practical Benefits
-
----
 layout: false
 .left-column[
-  ## Benefits
+  ## Konflux: My Project
+  ## Policy Gates
+  ## Doing Stuff
 ]
 .right-column[
 
-## What You Can Do With Provenance
-
-### 🔍 **Incident Response**
-- Quickly identify affected artifacts
-- Trace back to root cause
-- Understand blast radius
+## Stuff you can do
 
 ### 📊 **Compliance & Auditing**  
 - Prove security practices were followed
 - Generate audit reports automatically
-- Meet regulatory requirements
 
-### 🛡️ **Security Posture**
-- Block artifacts with known vulnerabilities
-- Ensure required security scans ran
-- Verify trusted build environments
+### 🔍 **Incident Response**
+- Trace back to root cause
+- Understand blast radius
+
+### 🧬 **Evolve Posture**
+- Block artifacts out of compliance
+- Encode schedules in the policies
 
 ]
 
 ---
 .left-column[
-  ## Benefits
-  ## Innovation
+  ## Konflux: My Project
+  ## Policy Gates
+  ## Doing Stuff
+  ## Innovation (last slide)
 ]
 .right-column[
 
 ## Enabling Safe Innovation
 
 .large[
-**Traditional approach**: Make insecure things impossible
+**One way**: Make insecure things impossible
 ]
 
 - 🐢 Innovation is slow
 - 🤷 Change gatekeepers may not understand needs  
-- 🏃‍♀️ Users circumvent restrictions
+- 🏃‍♀️ Devs circumvent restrictions, defeating the purpose
 
 .large[
-**Provenance approach**: Define what "good" looks like
+**Another way**: Define what "good" looks like
 ]
 
 - ✅ Clear requirements for release
@@ -432,7 +474,7 @@ layout: false
 ---
 template: inverse
 
-# 🎯 Ok.
+# 😐 Ok.
 
 ---
 name: last-page
@@ -442,11 +484,15 @@ template: inverse
 
 **Blog**: [How we use software provenance at Red Hat](https://developers.redhat.com/articles/2025/05/15/how-we-use-software-provenance-red-hat)
 
-**Try Konflux**: [konflux-ci.dev](https://konflux-ci.dev)
+**in-toto Attestations**: [in-toto.io](https://in-toto.io)
 
 **SLSA Framework**: [slsa.dev](https://slsa.dev)
 
-**in-toto Attestations**: [in-toto.io](https://in-toto.io)
+**Conforma**: [conforma.dev](https://conforma.dev)
+
+**Try Konflux**: [konflux-ci.dev](https://konflux-ci.dev)
+
+**slides**: [ralphbean.github.io/slides/bsides/buffalo/2025](https://ralphbean.github.io/slides/bsides/buffalo/2025)
 
 ---
 

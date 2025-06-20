@@ -214,14 +214,34 @@ $ echo '{"hello": "world"}' > predicate.json
 $ cosign attest \
     --type custom \
     --predicate predicate.json \
-    quay.io/rbean/test:bsides
+    quay.io/rbean/test:oss-na
 
 $ cosign verify-attestation \
     --certificate-identity ralph.bean@gmail.com \
     --certificate-oidc-issuer https://github.com/login/oauth \
-    quay.io/rbean/test:bsides \
+    quay.io/rbean/test:oss-na \
         | jq '.payload | @base64d | fromjson'
 ```
+
+]
+---
+layout: false
+.left-column[
+  ## Attestations
+  ## Predicate Types
+  ## cosign & sigstore
+  ## systems
+]
+.right-column[
+
+## Compare systems that produce provenance attestations
+
+| | 🐙 GitHub | 🦉 Witness | 🐱 Tekton |
+| --- | --- | --- | --- |
+| Source     | ✅ Detailed  | ✅ Detailed | ✅ Detailed |
+| Parameters | ✅ Detailed  | ✅ Detailed | ✅ Detailed |
+| Materials  | ❓ Unclear   | ✅ Detailed | ✅ Detailed |
+| Signature  | ❓ In build  | ❓ In build | ✅ External |
 
 ]
 

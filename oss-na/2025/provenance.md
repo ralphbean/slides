@@ -16,11 +16,6 @@ Ralph Bean • Red Hat
 .footnote[🔗 slides: [ralphbean.github.io/slides/oss-na/2025/provenance.html](https://ralphbean.github.io/slides/oss-na/2025/provenance.html)]
 
 ---
-template: inverse
-
-# 🍖 Meatspace Analogy
-
----
 layout: false
 .left-column[
   ## Meatspace Analogy

@@ -9,9 +9,9 @@ class: center, middle, inverse, title
 
 ### Open Source Summit - North America 2025
 
-Ralph Bean • Red Hat
-
 Andrew McNamara • Red Hat
+
+Ralph Bean • Red Hat
 
 .footnote[🔗 slides: [ralphbean.github.io/slides/oss-na/2025](https://ralphbean.github.io/slides/oss-na/2025)]
 
@@ -540,4 +540,4 @@ class: center, middle, inverse, title
 
 # Thanks!
 
-.footnote[Ralph Bean]
+.footnote[Andrew McNamara • Ralph Bean]

@@ -241,7 +241,7 @@ layout: false
 | Source     | ✅ Detailed  | ✅ Detailed | ✅ Detailed |
 | Parameters | ✅ Detailed  | ✅ Detailed | ✅ Detailed |
 | Materials  | ❓ Unclear   | ✅ Detailed | ✅ Detailed |
-| Signature  | ❓ In build  | ❓ In build | ✅ External * |
+| Signature  | ❓ In build  | ❓ In build | ⚠️ External  |
 
 ]
 

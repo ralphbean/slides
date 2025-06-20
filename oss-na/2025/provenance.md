@@ -448,6 +448,7 @@ layout: false
 ### 🧬 **Evolve Posture**
 - Block artifacts out of compliance
 - Encode schedules in the policies
+- Vary policy by target
 
 ]
 

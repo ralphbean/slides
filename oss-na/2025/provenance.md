@@ -249,22 +249,21 @@ layout: false
 ---
 template: inverse
 
-# 🏗️ Konflux: My Project
+# 🏗️ Konflux: Our Project
 
 ---
 layout: false
 .left-column[
-  ## Konflux: My Project
+  ## Konflux
 ]
 .right-column[
 
-## Konflux: Secure Software Factory
+## <img class="logo" style="vertical-align: middle;" width="25%" height="25%" src='https://konflux-ci.dev/img/logo.svg'/>: Secure Software Factory 
 
 .large[
 **Open source**, **cloud native** software factory focused on **supply chain security**.
 ]
 
-- 🔧 **Kubernetes-based**: Everything as Custom Resources
 - 🏗️ **Comprehensive**: Build → Test → Release pipeline
 - 🛡️ **Security-first**: Attestations throughout the process
 - 📊 **Policy-driven**: Machine-readable policies gate releases
@@ -276,9 +275,36 @@ layout: false
 
 ]
 
+
+---
+layout: false
+.left-column[
+  ## Konflux
+  ## Doing Stuff
+]
+.right-column[
+
+## Stuff you can do
+
+### 📊 **Compliance & Auditing**  
+- Prove security practices were followed
+- Generate audit reports automatically
+
+### 🔍 **Incident Response**
+- Trace back to root cause
+- Understand blast radius
+
+### 🧬 **Evolve Posture**
+- Block artifacts out of compliance
+- Encode schedules in the policies
+- Vary policies by target
+
+]
+
 ---
 .left-column[
-  ## Konflux: My Project
+  ## Konflux
+  ## Doing Stuff
   ## Policy Gates
 ]
 .right-column[
@@ -304,36 +330,10 @@ deny contains result if {
 ]
 
 ---
-layout: false
 .left-column[
-  ## Konflux: My Project
-  ## Policy Gates
+  ## Konflux
   ## Doing Stuff
-]
-.right-column[
-
-## Stuff you can do
-
-### 📊 **Compliance & Auditing**  
-- Prove security practices were followed
-- Generate audit reports automatically
-
-### 🔍 **Incident Response**
-- Trace back to root cause
-- Understand blast radius
-
-### 🧬 **Evolve Posture**
-- Block artifacts out of compliance
-- Encode schedules in the policies
-- Vary policy by target
-
-]
-
----
-.left-column[
-  ## Konflux: My Project
   ## Policy Gates
-  ## Doing Stuff
   ## Innovation (last slide)
 ]
 .right-column[
@@ -355,8 +355,23 @@ layout: false
 - ✅ Clear requirements for release
 - 🧪 Freedom to experiment in development
 - 🚀 Fast feedback loop
+- 👥 Democratize contributions
 
 ]
+
+---
+template: inverse
+
+# konflux is kool
+
+### Monday, June 23 (cdCon)
+Lock the Chef in the Kitchen: Enabling Accurate SBOMs Via Hermetic Builds
+### Wednesday, June 24 (cdCon)
+Who Are You Building For: Pipelines Have a Purpose
+### Wednesday, June 25 (OpenGovCon)
+Building Trust Through Proactive Security - Key Parts of the Trusted Software Supply Chain
+### Thursday, June 26 (OpenSSF Community Day)
+Who Are You Building For: Pipelines Have a Purpose
 
 ---
 template: inverse

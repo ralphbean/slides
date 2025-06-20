@@ -117,7 +117,7 @@ Generally, **provenance** is the **origin** of something.
 ]
 .right-column[
 
-![](../../../common/supply-chain-threats.svg)
+![](../../common/supply-chain-threats.svg)
 
 .footnote[*from the "Supply-chain Levels for Software Artifacts" or SLSA ("salsa") docs!]
 

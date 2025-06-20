@@ -251,7 +251,7 @@ jobs:
 ✅ **Source**: Commit SHA, repo URL  
 ✅ **Workflow**: Workflow file, inputs   
 ❓ **Materials**: Which actions?  
-❓ **Data plane**: What does it mean to be sigend?
+❓ **Data plane**: Signature happens in the workflow
 
 ]
 ---
@@ -277,7 +277,7 @@ oras blob fetch "$IMAGE" --output - | \
 ✅ **Source**: Commit SHA, repo URL  
 ✅ **Workflow**: Workflow file, inputs  
 ❓ **Materials**: Which actions?  
-❓ **Data plane**: What does it mean to be signed?
+❓ **Data plane**: Signature happens in the workflow
 
 ]
 
@@ -302,7 +302,7 @@ witness run -s deploy -- kubectl apply -f app.yaml
 ✅ **Source**: Commit SHA, repo URL   
 ✅ **Detailed task execution**: How was it called  
 ✅ **Detailed materials**: What was used  
-❓ **Data plane**: Payload signs itself  
+❓ **Data plane**: Signature happens in the workflow
 
 ]
 

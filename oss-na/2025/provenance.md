@@ -234,17 +234,16 @@ layout: false
 ]
 .right-column[
 
-## Compare systems that produce provenance attestations
+## Compare systems that produce provenance
 
 | | 🐙 GitHub | 🦉 Witness | 🐱 Tekton |
 | --- | --- | --- | --- |
 | Source     | ✅ Detailed  | ✅ Detailed | ✅ Detailed |
 | Parameters | ✅ Detailed  | ✅ Detailed | ✅ Detailed |
 | Materials  | ❓ Unclear   | ✅ Detailed | ✅ Detailed |
-| Signature  | ❓ In build  | ❓ In build | ✅ External |
+| Signature  | ❓ In build  | ❓ In build | ✅ External * |
 
 ]
-
 
 ---
 template: inverse

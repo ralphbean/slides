@@ -409,17 +409,16 @@ layout: false
 ## conforma: Policy-Based Gating
 
 ```rego
-_trust_errors contains error if {
-    not _uses_trusted_artifacts
-    some task in tekton.untrusted_task_refs(
-      lib.tasks_from_pipelinerun)
-    error := {
-        "msg": sprintf(
-            "Pipeline task %q uses an untrusted task reference, %s",
-            [tekton.pipeline_task_name(task), _task_info(task)],
-        ),
-        "term": tekton.task_name(task),
-    }
+deny contains result if {
+  some required_task in _missing_tasks(current_required_tasks.tasks)
+
+  # Don't report an error if a task is required now, but not in the future
+  required_task in latest_required_tasks.tasks
+  result := lib.result_helper_with_term(
+    rego.metadata.chain(),
+    [_format_missing(required_task, false)],
+    required_task
+  )
 }
 ```
 

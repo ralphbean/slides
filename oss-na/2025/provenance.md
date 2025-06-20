@@ -318,6 +318,30 @@ oras blob fetch "$IMAGE" --output - | \
 .left-column[
   ## sigstore & cosign
   ## GitHub
+  ## Witness
+]
+.right-column[
+
+## Witness Framework
+
+```bash
+witness run -s build -- make build
+witness run -s test -- make test  
+witness run -s deploy -- kubectl apply -f app.yaml
+```
+
+✅ **Source**: Commit SHA, repo URL   
+✅ **Detailed task execution**: How was it called  
+✅ **Detailed materials**: What was used  
+❓ **Data plane**: Payload signs itself  
+
+]
+
+---
+.left-column[
+  ## sigstore & cosign
+  ## GitHub
+  ## Witness
   ## Tekton
 ]
 .right-column[
@@ -349,6 +373,7 @@ spec:
 .left-column[
   ## sigstore & cosign
   ## GitHub
+  ## Witness
   ## Tekton
 ]
 .right-column[
@@ -370,29 +395,6 @@ cosign download attestation $IMAGE  2> /dev/null | \
 
 ]
 
----
-.left-column[
-  ## sigstore & cosign
-  ## GitHub
-  ## Tekton
-  ## Witness
-]
-.right-column[
-
-## Witness Framework
-
-```bash
-witness run -s build -- make build
-witness run -s test -- make test  
-witness run -s deploy -- kubectl apply -f app.yaml
-```
-
-✅ **Source**: Commit SHA, repo URL   
-✅ **Detailed task execution**: How was it called  
-✅ **Detailed materials**: What was used  
-❓ **Data plane**: Payload signs itself  
-
-]
 
 ---
 template: inverse

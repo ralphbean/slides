@@ -186,35 +186,6 @@ Instead of just "it's signed" → **"here's exactly what happened"**
 ---
 .left-column[
   ## Attestations
-  ## Structure
-]
-.right-column[
-
-## Attestation Anatomy
-
-```json
-{
-  "payloadType": "application/vnd.in-toto+json",
-  "payload": "<base64-encoded-statement>",
-  "signatures": [
-    {
-      "keyid": "...",
-      "sig": "..."
-    }
-  ]
-}
-```
-
-The **payload** contains:
-- **Subject**: The artifact being described
-- **Predicate**: The claim being made about it
-
-]
-
----
-.left-column[
-  ## Attestations
-  ## Structure
   ## Predicate Types
 ]
 .right-column[

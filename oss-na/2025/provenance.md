@@ -198,13 +198,10 @@ Each type answers different questions about your artifact.
 ]
 
 ---
-template: inverse
-
-# 🔍 Provenance Predicates in Practice
-
----
 layout: false
 .left-column[
+  ## Attestations
+  ## Predicate Types
   ## sigstore & cosign
 ]
 .right-column[
@@ -230,6 +227,8 @@ $ cosign verify-attestation \
 ---
 layout: false
 .left-column[
+  ## Attestations
+  ## Predicate Types
   ## sigstore & cosign
   ## GitHub
 ]
@@ -258,6 +257,8 @@ jobs:
 ---
 layout: false
 .left-column[
+  ## Attestations
+  ## Predicate Types
   ## sigstore & cosign
   ## GitHub
 ]
@@ -282,6 +283,8 @@ oras blob fetch "$IMAGE" --output - | \
 
 ---
 .left-column[
+  ## Attestations
+  ## Predicate Types
   ## sigstore & cosign
   ## GitHub
   ## Witness
@@ -305,6 +308,8 @@ witness run -s deploy -- kubectl apply -f app.yaml
 
 ---
 .left-column[
+  ## Attestations
+  ## Predicate Types
   ## sigstore & cosign
   ## GitHub
   ## Witness
@@ -337,6 +342,8 @@ spec:
 
 ---
 .left-column[
+  ## Attestations
+  ## Predicate Types
   ## sigstore & cosign
   ## GitHub
   ## Witness

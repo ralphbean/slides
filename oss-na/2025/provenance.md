@@ -170,9 +170,9 @@ An attestation is an **"I solemnly swear..."** statement
 ]
 
 - 👤 **Who**: Identity making the claim (signed)
+- 🔐 **Verification**: Cryptographically verifiable
 - 📦 **What**: The artifact being described
 - 📝 **Statement**: The specific claim being made
-- 🔐 **Verification**: Cryptographically verifiable
 
 Instead of just "it's signed" → **"here's exactly what happened"**
 

@@ -251,7 +251,7 @@ jobs:
 ✅ **Source**: Commit SHA, repo URL  
 ✅ **Workflow**: Workflow file, inputs   
 ❓ **Materials**: Which actions?  
-❓ **Data plane**: Who can sign?  
+❓ **Data plane**: What does it mean to be sigend?
 
 ]
 ---
@@ -277,7 +277,7 @@ oras blob fetch "$IMAGE" --output - | \
 ✅ **Source**: Commit SHA, repo URL  
 ✅ **Workflow**: Workflow file, inputs  
 ❓ **Materials**: Which actions?  
-❓ **Data plane**: Who can sign?  
+❓ **Data plane**: What does it mean to be signed?
 
 ]
 

@@ -224,149 +224,6 @@ $ cosign verify-attestation \
 ```
 
 ]
----
-layout: false
-.left-column[
-  ## Attestations
-  ## Predicate Types
-  ## sigstore & cosign
-  ## GitHub
-]
-.right-column[
-
-## GitHub Actions Provenance
-
-```yaml
-jobs:
-  build:
-    steps:
-      - uses: actions/checkout@v4
-      - name: Build
-        run: make build
-      - uses: actions/attest-build-provenance@v1
-        with:
-          subject-path: './dist/app'
-```
-
-✅ **Source**: Commit SHA, repo URL  
-✅ **Workflow**: Workflow file, inputs   
-❓ **Materials**: Which actions?  
-❓ **Data plane**: Signature happens in the workflow
-
-]
----
-layout: false
-.left-column[
-  ## Attestations
-  ## Predicate Types
-  ## sigstore & cosign
-  ## GitHub
-]
-.right-column[
-
-## GitHub Actions Provenance
-
-If there's network, show:
-
-```
-IMAGE=quay.io/lucarval/festoji@sha256:b508f3da1ba56f258d72da91c8ce07950ced85f142d81974022f61211c4a445a
-oras blob fetch "$IMAGE" --output - | \
-    jq '.dsseEnvelope.payload | @base64d | fromjson '
-```
-
-✅ **Source**: Commit SHA, repo URL  
-✅ **Workflow**: Workflow file, inputs  
-❓ **Materials**: Which actions?  
-❓ **Data plane**: Signature happens in the workflow
-
-]
-
----
-.left-column[
-  ## Attestations
-  ## Predicate Types
-  ## sigstore & cosign
-  ## GitHub
-  ## Witness
-]
-.right-column[
-
-## Witness Framework
-
-```bash
-witness run -s build -- make build
-witness run -s test -- make test  
-witness run -s deploy -- kubectl apply -f app.yaml
-```
-
-✅ **Source**: Commit SHA, repo URL   
-✅ **Detailed task execution**: How was it called  
-✅ **Detailed materials**: What was used  
-❓ **Data plane**: Signature happens in the workflow
-
-]
-
----
-.left-column[
-  ## Attestations
-  ## Predicate Types
-  ## sigstore & cosign
-  ## GitHub
-  ## Witness
-  ## Tekton
-]
-.right-column[
-
-## Tekton Chains Provenance
-
-```yaml
-apiVersion: tekton.dev/v1beta1
-kind: TaskRun
-metadata:
-  annotations:
-    chains.tekton.dev/signed: "true"
-spec:
-  taskRef:
-    name: git-clone
-  params:
-    - name: url
-      value: https://github.com/example/repo
-```
-
-✅ **Source**: Commit SHA, repo URL  
-✅ **Detailed task execution**: How was it called  
-✅ **Detailed materials**: What was used  
-✅ **Control plane**: Payload doesn't sign itself  
-
-]
-
----
-.left-column[
-  ## Attestations
-  ## Predicate Types
-  ## sigstore & cosign
-  ## GitHub
-  ## Witness
-  ## Tekton
-]
-.right-column[
-
-## Tekton Chains Provenance
-
-If there's network, show:
-
-```
-IMAGE=quay.io/bootc-devel/fedora-bootc-rawhide-standard:20250605-110837
-cosign download attestation $IMAGE  2> /dev/null | \
-    jq '.payload | @base64d | fromjson '
-```
-
-✅ **Source**: Commit SHA, repo URL  
-✅ **Detailed task execution**: How was it called  
-✅ **Detailed materials**: What was used  
-✅ **Control plane**: Payload doesn't sign itself  
-
-]
 
 
 ---
@@ -516,3 +373,135 @@ class: center, middle, inverse, title
 # Thanks!
 
 .footnote[Andrew McNamara • Ralph Bean]
+---
+
+# Appendix
+
+---
+layout: false
+.left-column[
+  ## GitHub
+]
+.right-column[
+
+## GitHub Actions Provenance
+
+```yaml
+jobs:
+  build:
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: make build
+      - uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: './dist/app'
+```
+
+✅ **Source**: Commit SHA, repo URL  
+✅ **Workflow**: Workflow file, inputs   
+❓ **Materials**: Which actions?  
+❓ **Data plane**: Signature happens in the workflow
+
+]
+---
+layout: false
+.left-column[
+  ## GitHub
+]
+.right-column[
+
+## GitHub Actions Provenance
+
+If there's network, show:
+
+```
+IMAGE=quay.io/lucarval/festoji@sha256:b508f3da1ba56f258d72da91c8ce07950ced85f142d81974022f61211c4a445a
+oras blob fetch "$IMAGE" --output - | \
+    jq '.dsseEnvelope.payload | @base64d | fromjson '
+```
+
+✅ **Source**: Commit SHA, repo URL  
+✅ **Workflow**: Workflow file, inputs  
+❓ **Materials**: Which actions?  
+❓ **Data plane**: Signature happens in the workflow
+
+]
+
+---
+.left-column[
+  ## GitHub
+  ## Witness
+]
+.right-column[
+
+## Witness Framework
+
+```bash
+witness run -s build -- make build
+witness run -s test -- make test  
+witness run -s deploy -- kubectl apply -f app.yaml
+```
+
+✅ **Source**: Commit SHA, repo URL   
+✅ **Detailed task execution**: How was it called  
+✅ **Detailed materials**: What was used  
+❓ **Data plane**: Signature happens in the workflow
+
+]
+
+---
+.left-column[
+  ## GitHub
+  ## Witness
+  ## Tekton
+]
+.right-column[
+
+## Tekton Chains Provenance
+
+```yaml
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  annotations:
+    chains.tekton.dev/signed: "true"
+spec:
+  taskRef:
+    name: git-clone
+  params:
+    - name: url
+      value: https://github.com/example/repo
+```
+
+✅ **Source**: Commit SHA, repo URL  
+✅ **Detailed task execution**: How was it called  
+✅ **Detailed materials**: What was used  
+✅ **Control plane**: Payload doesn't sign itself  
+
+]
+
+---
+.left-column[
+  ## GitHub
+  ## Witness
+  ## Tekton
+]
+.right-column[
+
+## Tekton Chains Provenance
+
+If there's network, show:
+
+```
+IMAGE=quay.io/bootc-devel/fedora-bootc-rawhide-standard:20250605-110837
+cosign download attestation $IMAGE  2> /dev/null | \
+    jq '.payload | @base64d | fromjson '
+```
+
+✅ **Source**: Commit SHA, repo URL  
+✅ **Detailed task execution**: How was it called  
+✅ **Detailed materials**: What was used  
+✅ **Control plane**: Payload doesn't sign itself  
+
+]

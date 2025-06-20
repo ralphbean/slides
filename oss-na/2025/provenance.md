@@ -13,7 +13,7 @@ Andrew McNamara • Red Hat
 
 Ralph Bean • Red Hat
 
-.footnote[🔗 slides: [ralphbean.github.io/slides/oss-na/2025](https://ralphbean.github.io/slides/oss-na/2025)]
+.footnote[🔗 slides: [ralphbean.github.io/slides/oss-na/2025/provenance.html](https://ralphbean.github.io/slides/oss-na/2025/provenance.html)]
 
 ---
 template: inverse
@@ -531,7 +531,7 @@ template: inverse
 
 **Try Konflux**: [konflux-ci.dev](https://konflux-ci.dev)
 
-**slides**: [ralphbean.github.io/slides/oss-na/2025](https://ralphbean.github.io/slides/oss-na/2025)
+**slides**: [ralphbean.github.io/slides/oss-na/2025/provenance.html](https://ralphbean.github.io/slides/oss-na/2025/provenance.html)
 
 ---
 

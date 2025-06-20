@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(s/firacode/v26/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_GNsFVc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(s/firacode/v26/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_D1sFVc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(s/firacode/v26/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_A9sFVc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(s/firacode/v26/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_NprFVc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(s/ibmplexmono/v19/-F63fjptAgt5VM-kVkqdyU8n5ig.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(s/ibmplexmono/v19/-F6qfjptAgt5VM-kVkqdyU8n3twJ8lc.ttf) format('truetype');
+}

@@ -156,29 +156,9 @@ Instead of just "it's signed" → **"here's exactly what happened"**
 ]
 
 ---
-.left-column[
-  ## Attestations
-  ## Predicate Types
-]
-.right-column[
-
-## Different Types of Attestations
-
-- 🏗️ **SLSA Provenance**: How was this built?
-- 📋 **SBOM**: What components does this contain?
-- 🛡️ **Vulnerability Scan**: What security issues exist?
-- ✅ **Test Results**: What tests passed/failed?
-- 📝 **Code Review**: Who approved the changes?
-
-Each type answers different questions about your artifact.
-
-]
-
----
 layout: false
 .left-column[
   ## Attestations
-  ## Predicate Types
   ## sigstore & cosign
 ]
 .right-column[
@@ -205,7 +185,6 @@ $ cosign verify-attestation \
 layout: false
 .left-column[
   ## Attestations
-  ## Predicate Types
   ## sigstore & cosign
   ## systems
 ]

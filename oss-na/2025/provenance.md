@@ -91,35 +91,13 @@ Generally, **provenance** is the **origin** of something.
   ## Meatspace Analogy
   ## Software Reality
   ## What is Provenance?
-  ## Why Care?
-]
-.right-column[
-
-## Supply Chain Attacks are a Thing
-
-- **SolarWinds** (2020): Build system compromised
-- **Codecov** (2021): Bash uploader script compromised  
-- **npm packages**: Malicious dependencies injected
-- **PyPI typosquatting**: Fake packages with similar names
-
-.large[
-🎯 **Attackers target the build process because it's often less defended than the final product.**
-]
-
-]
----
-.left-column[
-  ## Meatspace Analogy
-  ## Software Reality
-  ## What is Provenance?
-  ## Why Care?
   ## Threats
 ]
 .right-column[
 
 ![](../../common/supply-chain-threats.svg)
 
-.footnote[*from the "Supply-chain Levels for Software Artifacts" or SLSA ("salsa") docs!]
+.footnote[*from the "Supply-chain Levels for Software Artifacts" (SLSA) docs!]
 
 ]
 
@@ -128,7 +106,6 @@ Generally, **provenance** is the **origin** of something.
   ## Meatspace Analogy
   ## Software Reality
   ## What is Provenance?
-  ## Why Care?
   ## Threats
   ## Traditional Signing
 ]

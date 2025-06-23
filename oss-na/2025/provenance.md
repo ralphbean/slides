@@ -206,7 +206,7 @@ layout: false
 .left-column[
   ## Attestations
   ## Predicate Types
-  ## cosign & sigstore
+  ## sigstore & cosign
   ## systems
 ]
 .right-column[

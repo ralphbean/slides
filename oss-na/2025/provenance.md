@@ -329,11 +329,6 @@ Building Trust Through Proactive Security - Key Parts of the Trusted Software Su
 Who Are You Building For: Pipelines Have a Purpose
 
 ---
-template: inverse
-
-# Ok.
-
----
 name: last-page
 template: inverse
 

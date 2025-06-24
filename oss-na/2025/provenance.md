@@ -440,6 +440,31 @@ witness run -s deploy -- kubectl apply -f app.yaml
 
 ]
 
+.footnote[or with a GitHub Action: https://github.com/testifysec/witness-demo]
+---
+.left-column[
+  ## GitHub
+  ## Witness
+]
+.right-column[
+
+## Witness Provenance
+
+If there's network, show:
+
+```
+IMAGE=quay.io/bootc-devel/fedora-bootc-rawhide-standard:20250605-110837
+cosign download attestation $IMAGE  2> /dev/null | \
+    jq '.payload | @base64d | fromjson '
+```
+
+✅ **Source**: Commit SHA, repo URL   
+✅ **Detailed task execution**: How was it called  
+✅ **Detailed materials**: What was used  
+❓ **Data plane**: Signature happens in the workflow
+
+]
+
 ---
 .left-column[
   ## GitHub

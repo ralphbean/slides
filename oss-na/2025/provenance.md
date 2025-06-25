@@ -448,8 +448,8 @@ witness run -s deploy -- kubectl apply -f app.yaml
 If there's network, show:
 
 ```
-IMAGE=quay.io/bootc-devel/fedora-bootc-rawhide-standard:20250605-110837
-cosign download attestation $IMAGE  2> /dev/null | \
+GITOID=ea3c0279f13820dba07aafc8d215971f32f3053bb41743e88a00e669eec6c64f
+curl -s https://archivista.testifysec.io/download/$GITOID -- | 
     jq '.payload | @base64d | fromjson '
 ```
 

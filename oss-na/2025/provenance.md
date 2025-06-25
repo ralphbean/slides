@@ -221,8 +221,8 @@ layout: false
 
 - 🏗️ **Comprehensive**: Build → Test → Release pipeline
 - 🛡️ **Security-first**: Attestations throughout the process
+- 📋 **SBOM**: Novel manifest generation with "Hermeto"
 - 📊 **Policy-driven**: Machine-readable policies gate releases
-- 📋 **SBOM**: Novel manifest generation with "Hermeto".
 
 .footnote[
 **Each step creates verifiable evidence**
